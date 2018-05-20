@@ -349,3 +349,30 @@ print('array', my_array.shape)
 #     [[5, 6], [7, 8]]
 # ])
 # print('mat', my_mat)
+
+import numpy as np
+print(np.zeros([2,3]))
+print(np.ones([2,3]))
+print(np.random.rand(3,4))
+print(np.eye(3))
+print(np.ones([3,3]) + np.eye(3))
+print(5*np.ones([3,3]))
+m1 = np.mat([2,3])
+m2 = np.mat([4,5])
+print(np.multiply(m1,m2))
+# print(m1*m2)
+print(np.mat([2,3]) * np.eye(2))
+
+print(m1.T)
+print(m2.transpose())
+print(np.shape(m1))
+
+m3 = np.mat([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])
+print(np.shape(m3))
+print(m3[0])
+print(m3.T[0])
+print(m3[0:3])
+print(np.linalg.det(m3[0:3]))
+print(np.linalg.matrix_rank(m3))
+print(np.linalg.norm(np.mat([1,2,3])))
+
