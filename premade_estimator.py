@@ -38,7 +38,6 @@ def main(argv):
     for key in train_x.keys():
         my_feature_columns.append(tf.feature_column.numeric_column(key=key))
 
-
     # Build 2 hidden layer DNN with 10, 10 units respectively.
     classifier = tf.estimator.DNNClassifier(
         feature_columns=my_feature_columns,
@@ -47,22 +46,11 @@ def main(argv):
         # The model must choose between 3 classes.
         n_classes=3)
 
-    print('args.batch_size', args.batch_size)
-    print('args.train_steps', args.train_steps)
-
-
-
     # Train the Model.
-    # classifier.train(
-    #     input_fn=lambda:iris_data.train_input_fn(train_x, train_y,
-    #                                              args.batch_size),
-    #     steps=args.train_steps)
-
-    train_path, test_path = iris_data.maybe_download()
-
     classifier.train(
-            input_fn=lambda:iris_data.csv_input_fn(train_path, args.batch_size),
-            steps=args.train_steps)
+        input_fn=lambda:iris_data.train_input_fn(train_x, train_y,
+                                                 args.batch_size),
+        steps=args.train_steps)
 
     # Evaluate the model.
     eval_result = classifier.evaluate(

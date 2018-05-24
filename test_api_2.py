@@ -65,3 +65,7 @@ with tf.Session() as sess:
     # print(sess.run(inc_v1))
     # print(sess.run(dec_v2))
     print(inc_v1.op.run())
+
+
+test = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print("reshape", tf.reshape(test, [3,3]))
