@@ -48,7 +48,7 @@ def my_model(features, labels, mode, params):
         net = tf.layers.dense(net, units=units, activation=tf.nn.relu)
 
     # Compute logits (1 per class).
-    logits = tf.layers.dense(net, params['n_classes'], activation=None)
+    logits = tf.layers.dense(net, units=params['n_classes'], activation=None)
 
     # Compute predictions.
     predicted_classes = tf.argmax(logits, 1)

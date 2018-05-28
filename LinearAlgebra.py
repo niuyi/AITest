@@ -83,7 +83,7 @@ c = array([5])
 print('a+b\n', a+b)
 print('a-b\n', a-b)
 print('a*2\n', a*2)
-print('a*b\n', a*b) #elementwise!!
+print('a*b\n', a*b) #elementwise!! 点乘
 print('a*c\n', a*c) #elementwise!!
 print('a<20\n', a < 20)
 
@@ -146,12 +146,18 @@ print(E[1:3, 1:2])
 print(E[-1]) #When fewer indices are provided than the number of axes, the missing indices are considered complete slices
 
 print('############################################################################################################')
-F = array([[[  0,  1,  2],               # a 3D array (two stacked 2D arrays)
-                [ 10, 12, 13]],
-               [[100,101,102],
-                [110,112,113]]])
+F = array([
+    [
+        [  0,  1,  2], [ 10, 12, 13]
+    ],
+    [
+        [100,101,102], [110,112,113]
+    ]
+])
 
 print(F.shape) #(2, 2, 3)
+
+print('101', F[1, 0, 1])
 
 print(F[1,...])
 # [[100 101 102]
@@ -201,7 +207,7 @@ H1 = array([2, 8])
 # column_stack((G1, H1))
 #  [[4 2]
 #  [2 8]]
-# G1[:,newaxis]
+# G1[:,newaxis] #（多维数组）增加一个轴
 #  [[4]
 #  [2]]
 # H1[:,newaxis]
@@ -366,13 +372,14 @@ print(np.mat([2,3]) * np.eye(2))
 print(m1.T)
 print(m2.transpose())
 print(np.shape(m1))
-
+n
 m3 = np.mat([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])
-print(np.shape(m3))
-print(m3[0])
-print(m3.T[0])
-print(m3[0:3])
-print(np.linalg.det(m3[0:3]))
-print(np.linalg.matrix_rank(m3))
-print(np.linalg.norm(np.mat([1,2,3])))
+print(m3)
+print('np.shape(m3)', np.shape(m3))
+print('m3[0]', m3[0])
+print('m3.T[0]', m3.T[0])
+print('m3[0:3]', m3[0:3])
+print('np.linalg.det(m3[0:3])', np.linalg.det(m3[0:3]))
+print('np.linalg.matrix_rank(m3)', np.linalg.matrix_rank(m3))
+print('np.linalg.norm(np.mat([1,2,3]))', np.linalg.norm(np.mat([1,2,3])))
 

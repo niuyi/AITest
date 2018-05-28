@@ -32,6 +32,10 @@ def train_input_fn(features, labels, batch_size):
     # Convert the inputs to a Dataset.
     dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
 
+    print('dict(features) SepalLength', type(dict(features)['SepalLength']))
+    print('dict(features) SepalLength 0 6.4', type(dict(features)['SepalLength'][0]))
+
+
     # Shuffle, repeat, and batch the examples.
     dataset = dataset.shuffle(1000).repeat().batch(batch_size)
 

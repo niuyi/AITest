@@ -26,16 +26,18 @@ sess = tf.Session()
 # print(sess.run(a))
 # print(sess.run({'ab': (a,b), 'total':total}))
 #
-# # vec = tf.random_uniform(shape=(1,3))
-# # print(vec.get_shape())
-# # print(sess.run(vec))
-#
+# vec = tf.random_uniform(shape=(1,3))
+# print(vec.get_shape())
+# print(sess.run(vec))
+# #
 # vec2 = tf.random_uniform(shape=(3,))
 # out1 = vec2 + 1
 # print(sess.run(vec2))
 # print(sess.run(out1))
 #
 # x = tf.placeholder(tf.float32)
+# print(sess.run(x, feed_dict={x:3}))
+
 # y = tf.placeholder(tf.float32)
 # z = x + y
 #
@@ -202,8 +204,8 @@ sess = tf.Session()
 # # print(tf.get_collection("my_collection_name"))
 
 
-v = tf.get_variable("v", shape=(2,3), initializer=tf.zeros_initializer())
-assignment = v.assign_add([[1,2,3],[4,5,6]])
-sess.run(tf.global_variables_initializer())
-print(sess.run(assignment))  # or assignment.op.run(), or assignment.eval()
+# v = tf.get_variable("v", shape=(2,3), initializer=tf.zeros_initializer())
+# assignment = v.assign_add([[1,2,3],[4,5,6]])
+# sess.run(tf.global_variables_initializer())
+# print(sess.run(assignment))  # or assignment.op.run(), or assignment.eval()
 

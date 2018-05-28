@@ -2,8 +2,18 @@ print('hello test dataset')
 import tensorflow as tf
 sess = tf.Session()
 
-# v = tf.random_uniform([10,4])
+# v = tf.random_uniform([1,6])
+
+# iterator = tf.data.Dataset.from_tensor_slices(v).make_initializable_iterator()
+# next = iterator.get_next()
+
+# with tf.Session() as sess:
+#     print(sess.run(v))
+    # sess.run(iterator.initializer)
+    # for _ in range(4):
+    #     print(sess.run(next))
 #
+
 # dataset = tf.data.Dataset.from_tensor_slices(v)
 # print(dataset.output_types)
 # print(dataset.output_shapes)
@@ -161,9 +171,12 @@ sess = tf.Session()
 #
 # sess.run(iterator.initializer)
 # next1, (next2, next3) = iterator.get_next()
+# next = iterator.get_next()
 #
 # for _ in range(4):
-#     print(sess.run(next3))
+#     print(sess.run(next))
+
+
 
 # filenames = tf.placeholder(tf.string, shape=[None])
 # dataset = tf.data.TFRecordDataset(filenames)
@@ -185,7 +198,7 @@ sess = tf.Session()
 
 dataset = tf.data.Dataset.range(100)
 dataset = dataset.map(lambda x: tf.fill([tf.cast(x, tf.int32)], x))
-dataset = dataset.padded_batch(4, padded_shapes=[None])
+dataset = dataset.padded_batch(8, padded_shapes=[None])
 
 iterator = dataset.make_one_shot_iterator()
 next_element = iterator.get_next()
@@ -195,3 +208,6 @@ print(sess.run(next_element))  # ==> [[4, 4, 4, 4, 0, 0, 0],
                                #      [5, 5, 5, 5, 5, 0, 0],
                                #      [6, 6, 6, 6, 6, 6, 0],
                                #      [7, 7, 7, 7, 7, 7, 7]]
+print(sess.run(next_element))
+print(sess.run(next_element))
+print(sess.run(next_element))

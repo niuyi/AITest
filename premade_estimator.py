@@ -33,6 +33,8 @@ def main(argv):
     # Fetch the data
     (train_x, train_y), (test_x, test_y) = iris_data.load_data()
 
+    print(type(train_x))
+
     # Feature columns describe how to use the input.
     my_feature_columns = []
     for key in train_x.keys():
@@ -57,6 +59,9 @@ def main(argv):
         input_fn=lambda:iris_data.eval_input_fn(test_x, test_y,
                                                 args.batch_size))
 
+
+    print('eval_result', eval_result)
+
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
     # Generate predictions from the model
@@ -75,7 +80,12 @@ def main(argv):
 
     template = ('\nPrediction is "{}" ({:.1f}%), expected "{}"')
 
+    print('predictions', predictions)
+
     for pred_dict, expec in zip(predictions, expected):
+        print('pred_dict', pred_dict)
+        print('expec', expec)
+
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
 
