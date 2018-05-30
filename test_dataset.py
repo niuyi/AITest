@@ -1,5 +1,6 @@
 print('hello test dataset')
 import tensorflow as tf
+import numpy as np
 sess = tf.Session()
 
 # v = tf.random_uniform([1,6])
@@ -196,18 +197,52 @@ sess = tf.Session()
 #     print(sess.run(next))
 
 
-dataset = tf.data.Dataset.range(100)
-dataset = dataset.map(lambda x: tf.fill([tf.cast(x, tf.int32)], x))
-dataset = dataset.padded_batch(8, padded_shapes=[None])
+# dataset = tf.data.Dataset.range(100)
+# dataset = dataset.map(lambda x: tf.fill([tf.cast(x, tf.int32)], x))
+# dataset = dataset.padded_batch(8, padded_shapes=[None])
+#
+# iterator = dataset.make_one_shot_iterator()
+# next_element = iterator.get_next()
+#
+# print(sess.run(next_element))  # ==> [[0, 0, 0], [1, 0, 0], [2, 2, 0], [3, 3, 3]]
+# print(sess.run(next_element))  # ==> [[4, 4, 4, 4, 0, 0, 0],
+#                                #      [5, 5, 5, 5, 5, 0, 0],
+#                                #      [6, 6, 6, 6, 6, 6, 0],
+#                                #      [7, 7, 7, 7, 7, 7, 7]]
+# print(sess.run(next_element))
+# print(sess.run(next_element))
+# print(sess.run(next_element))
+
+# dataset = tf.data.Dataset.from_tensor_slices(np.random.uniform(size=(5,2)))
+# iterator = dataset.make_one_shot_iterator()
+# one_element = iterator.get_next()
+# with tf.Session() as sess:
+#     try:
+#         while True:
+#             print(sess.run(one_element))
+#     except tf.errors.OutOfRangeError:
+#         print("end!")
+
+#
+# {'a': 1.0, 'b': array([0.08992267, 0.28729095])}
+# {'a': 2.0, 'b': array([0.61135189, 0.26666089])}
+# {'a': 3.0, 'b': array([0.47938285, 0.11555829])}
+# {'a': 4.0, 'b': array([0.48996376, 0.8598215 ])}
+# {'a': 5.0, 'b': array([0.89530159, 0.69854528])}
+
+dataset = tf.data.Dataset.from_tensor_slices(
+    {
+        "a": np.array([1.0, 2.0, 3.0, 4.0, 5.0]),
+        "b": np.random.uniform(size=(5, 2))
+    }
+)
 
 iterator = dataset.make_one_shot_iterator()
-next_element = iterator.get_next()
+one_element = iterator.get_next()
+with tf.Session() as sess:
+    try:
+        while True:
+            print(sess.run(one_element))
+    except tf.errors.OutOfRangeError:
+        print("end!")
 
-print(sess.run(next_element))  # ==> [[0, 0, 0], [1, 0, 0], [2, 2, 0], [3, 3, 3]]
-print(sess.run(next_element))  # ==> [[4, 4, 4, 4, 0, 0, 0],
-                               #      [5, 5, 5, 5, 5, 0, 0],
-                               #      [6, 6, 6, 6, 6, 6, 0],
-                               #      [7, 7, 7, 7, 7, 7, 7]]
-print(sess.run(next_element))
-print(sess.run(next_element))
-print(sess.run(next_element))
