@@ -42,7 +42,7 @@ ClustDist = mat(zeros((m, 2)))
 # 随机生成一个数据集的聚类中心:本例为2*4的矩阵
 # 确保该聚类中心位于min(dataMat[:,j]),max(dataMat[:,j])之间
 
-# 随机生成聚类中心
+# 随机生成聚类中心,并不是在已经有的点中选择
 def randCenters(dataSet, k):
     n = shape(dataSet)[1] #返回有多少列，这里返回2
     clustercents = mat(zeros((k,n)))# 初始化聚类中心矩阵:k*n
@@ -101,7 +101,7 @@ while flag:
         # 遍历k个聚类中心,获取最短距离
         distlist = [distEclud(clustercents[j, :], dataSet[i, :]) for j in range(k)]
         minDist = min(distlist)
-        minIndex = distlist.index(minDist)
+        minIndex = distlist.index(minDist)#距离第几个中心点最近
 
         # 列1：数据集对应的聚类中心,列2:数据集行向量到聚类中心的距离
         # ClustDist = mat(zeros((m, 2)))
@@ -124,7 +124,7 @@ while flag:
         # print('ClustDist[:, 0].A\n', ClustDist[:, 0].A)
         # print(ClustDist[:, 0].A == cent)
 
-        #ClustDist[:, 0]是取第一列，ClustDist[:, 0].A抓换成ndarray
+        #ClustDist[:, 0]是取第一列，ClustDist[:, 0].A转换成ndarray
         #ClustDist[:, 0].A == cent,把等于cent的行设为true，其余是false，[true, false, false,....]
         #nonzero(ClustDist[:, 0].A == cent)[0]是取出所有这些行的行号
 
