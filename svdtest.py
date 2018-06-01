@@ -15,6 +15,7 @@ hV = hVT.T
 # print "hV:",hV
 sigma = 	sqrt(lamda)         # 特征值
 print("sigma:",sigma)
+print("sigma2:",sqrt(linalg.eig(A.T*A)[0]))
 print('hU\n', hU)
 print('hV\n', hV)
 
