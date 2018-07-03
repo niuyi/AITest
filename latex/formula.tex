@@ -1,7 +1,11 @@
-\documentclass[UTF8]{ctexart}
+\documentclass[UTF8,12pt]{ctexart}
 \usepackage{amsmath}
+\usepackage{color}
+\definecolor{myback}{RGB}{79,114,108}
+\pagecolor{myback}
+
 \begin{document}
-Einstein 's $E=mc^2$.
+\textcolor{white}{\LARGE Einstein 's $E=mc^2$.}
 
 \[ E=mc^2. \]
 
@@ -25,5 +29,39 @@ E=mc^2.
 \[ \Delta \]
 
 \[ \Delta f(x_k) = f(x_{k+1}) - f(x_k) \]
+
+%设 $\{x_n\},x_n \in R,n = 1,2,..., x_0 \in R$，对于任意的正实数$\epsilon$，存在自然数N，使得当$n > N$时，有$\left| x_n - x_0 \right| < \epsilon$
+
+设 $\{x_n\}$为一数列，如果存在常数a，对于任意给定的正数$\epsilon$（不论它多么小）,总存在正整数N，使得当$n > N$时，不等式$\left| x_n - a \right| < \epsilon$都成立
+
+
+设 $x=\eta_1$、$x=\eta_2$是方程组 $Ax=b$ 的解，则$x=\eta_1 - \eta_2$是对应的齐次线性方程组$Ax=0$的解。
+
+\[ f(x_1,x_2 | \theta) = f(x_1 | \theta) \times f(x_2 | \theta)\]
+
+\[ Av = \lambda v \]
+
+设$x=\eta$是方程组$Ax=b$的解，$x=\xi$是对应的齐次线性方程组$Ax=0$的解，则$x=\eta + \xi$仍是方程组$Ax=b$的解。
+
+一般，若参数方程：
+
+\[
+\begin{cases}
+x =  \phi (t) \\
+y =  \psi (t) \\
+\end{cases}
+\]
+
+确定y与x间的函数关系，则称此函数关系所表达的函数为由上面的参数方程所确定的函数
+
+%设$\Omega$是随机试验$E$的样本空间，x是任意实数，称函数$F(x) = P\{ X \leqslant x\} = P\{\omega: X(\omega) \leqslant x \}$
+%为随机变量$X$的分布函数
+
+设$\Omega$是随机试验$E$的样本空间，x是任意实数，称函数:
+\[F(x)= P\{ X \le x\} = P\{\omega: X(\omega) \le x \}\]为随机变量$X$的分布函数
+
+
+\[ X \sim \chi^2(k) \]
+
 
 \end{document}
